@@ -28,6 +28,7 @@ set :public_folder, File.join(APP_ROOT, "public")
 
 set :views, File.join(APP_ROOT, "views")
 set :erb, layout: :'application'
+set :run, true #Comment out so that rake db:migrate will not straightaway access the server
 
 require APP_ROOT.join('config', 'database')
 
