@@ -2,7 +2,6 @@ require_relative './config/init.rb'
 set :run, true
 
 get '/' do
-  @name = "Bob Smith"
   @time = Time.now
   erb :"home"
 end
@@ -43,5 +42,13 @@ end
 
 post '/logout' do
   # kill a session when a user chooses to logout, for example, assign nil to a session
-  # redirect to the appropriate page
+  session[:user_id] = nil
+  # redirect to homepage
+  redirect '/'
+end
+
+#Wildcard params
+get '/users/:id' do
+  @user = User.find(params[:id])
+  erb :"user_display"
 end
